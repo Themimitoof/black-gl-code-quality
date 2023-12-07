@@ -18,8 +18,8 @@ isort = "^5.11.5"
 black = "^23.3.0"
 
 [tool.poetry.scripts]
-black_gl_cq = "black_gl_code_quality.__main__:main"
-black_gl_code_quality = "black_gl_code_quality.__main__:main"
+black-gl-cq = "black_gl_code_quality.__main__:main"
+black-gl-code-quality = "black_gl_code_quality.__main__:main"
 
 [build-system]
 requires = ["poetry-core"]

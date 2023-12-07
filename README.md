@@ -5,7 +5,7 @@ This project aim to convert [Black](https://github.com/psf/black) report to
 format that can be ingest by GitLab.
 
 ```
-→ poetry run black_gl_cq src/black_gl_code_quality | jq
+→ poetry run black-gl-cq src/black-gl-code-quality | jq
 [
   {
     "type": "issue",
@@ -15,7 +15,7 @@ format that can be ingest by GitLab.
         "begin": 1,
         "end": 1
       },
-      "path": "src/black_gl_code_quality/__main__.py"
+      "path": "src/black-gl-code-quality/__main__.py"
     },
     "severity": "major"
   },
@@ -27,7 +27,7 @@ format that can be ingest by GitLab.
         "begin": 1,
         "end": 1
       },
-      "path": "src/black_gl_code_quality/error.py"
+      "path": "src/black-gl-code-quality/error.py"
     },
     "severity": "major"
   }
@@ -47,13 +47,13 @@ solution was required to obtain Black errors in our Code Quality reports.
 Simply run the following command:
 
 ```
-pip install black_gl_code_quality
+pip install black-gl-code-quality
 ```
 
 If you use Poetry, you can add it to your dev-dependencies:
 
 ```
-poetry add --group dev black_gl_code_quality
+poetry add --group dev black-gl-code-quality
 ```
 
 ## Usage
@@ -61,7 +61,7 @@ poetry add --group dev black_gl_code_quality
 There is two ways to use this tool:
 
  - by piping Black
- - by calling `black_gl_code_quality` (or by it's alias `black_gl_cq`) directly
+ - by calling `black-gl-code-quality` (or by it's alias `black-gl-cq`) directly
 
 
 ### Piping with Black
@@ -70,7 +70,7 @@ Piping with Black requires to forward  `stderr` to `stdout`. You can use the fol
 command in the `.gitlab-ci.yml`:
 
 ```
-black --check src/ 2>&1 | black_gl_cq > black-code-quality-report.json
+black --check src/ 2>&1 | black-gl-cq > black-code-quality-report.json
 ```
 
 Here's an example for a GitLab-CI job:
@@ -80,16 +80,16 @@ lint:black:
   stage: test
   script:
     - source .venv/bin/activate
-    - black --check src/ 2>&1 | black_gl_cq > black-code-quality-report.json
+    - black --check src/ 2>&1 | black-gl-cq > black-code-quality-report.json
   artifacts:
     when: always
     reports:
       codequality: black-code-quality-report.json
 ```
 
-### Calling `black_gl_code_quality` directly
+### Calling `black-gl-code-quality` directly
 
-Calling `black_gl_code_quality` (or it's alias `black_gl_cq`) execute Black with the
+Calling `black-gl-code-quality` (or it's alias `black-gl-cq`) execute Black with the
 `--check` argument. It forwards all arguments you pass if you need to configure Black
 via the CLI.
 
@@ -102,7 +102,7 @@ lint:black:
   stage: test
   script:
     - source .venv/bin/activate
-    - black_gl_cq src/ > black-code-quality-report.json
+    - black-gl-cq src/ > black-code-quality-report.json
   artifacts:
     when: always
     reports:
@@ -116,7 +116,7 @@ lint:black:
   stage: test
   script:
     - source .venv/bin/activate
-    - black_gl_cq -S src/ > black-code-quality-report.json
+    - black-gl-cq -S src/ > black-code-quality-report.json
   artifacts:
     when: always
     reports:
@@ -139,7 +139,7 @@ lint:black:
     BLACK_GL_SEVERITY: minor
   script:
     - source .venv/bin/activate
-    - black_gl_cq src/ > black-code-quality-report.json
+    - black-gl-cq src/ > black-code-quality-report.json
   artifacts:
     when: always
     reports:
