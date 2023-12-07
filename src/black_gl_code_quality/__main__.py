@@ -15,6 +15,7 @@ def main():
     output = []
     stdin: TextIO = sys.stdin
     severity = os.environ.get("BLACK_GL_SEVERITY", "major").lower()
+    exit_code = 0
 
     if not validate_severity(severity):
         severity = "major"
@@ -25,10 +26,12 @@ def main():
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
         )
+        exit_code = res.returncode
         stdin = StringIO(res.stderr.decode("utf-8"))
 
     output = parse_simple_mode(stdin.readlines(), severity)
     print(json.dumps(output))
+    sys.exit(exit_code)
 
 
 if __name__ == "__main__":
