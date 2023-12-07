@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "black-gl-code-quality"
+version = "0.1.0"
+description = "A simple wrapper to convert Black outputs to codeclimate report format for GitLab-CI"
+authors = ["Michael Vieira <dev@mvieira.fr>"]
+repository = "https://github.com/themimitoof/black-gl-code-quality"
+license = "BSD-3-Clause"
+readme = "README.md"
+keywords = ["Black", "CodeClimate", "GitLab", "GitLab-CI", "Code Quality"]
+packages = [{ include = "black_gl_code_quality", from = "src" }]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+
+[tool.poetry.group.dev.dependencies]
+flake8 = "5.0.4"
+isort = "^5.11.5"
+black = "^23.3.0"
+
+[tool.poetry.scripts]
+black_gl_cq = "black_gl_code_quality.__main__:main"
+black_gl_code_quality = "black_gl_code_quality.__main__:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
