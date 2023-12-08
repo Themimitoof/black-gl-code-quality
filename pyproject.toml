@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "black-gl-code-quality"
-version = "0.1.1"
+version = "0.2.0"
 description = "A simple wrapper to convert Black outputs to codeclimate report format for GitLab-CI"
 authors = ["Michael Vieira <dev@mvieira.fr>"]
 repository = "https://github.com/themimitoof/black-gl-code-quality"
