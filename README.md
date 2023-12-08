@@ -5,7 +5,7 @@ This project aim to convert [Black](https://github.com/psf/black) report to
 format that can be ingest by GitLab.
 
 ```
-→ poetry run black-gl-cq src/black-gl-code-quality | jq
+→ poetry run black-gl-cq src/black_gl_code_quality | jq
 [
   {
     "type": "issue",
@@ -15,7 +15,7 @@ format that can be ingest by GitLab.
         "begin": 1,
         "end": 1
       },
-      "path": "src/black-gl-code-quality/__main__.py"
+      "path": "src/black_gl_code_quality/__main__.py"
     },
     "severity": "major"
   },
@@ -27,7 +27,7 @@ format that can be ingest by GitLab.
         "begin": 1,
         "end": 1
       },
-      "path": "src/black-gl-code-quality/error.py"
+      "path": "src/black_gl_code_quality/error.py"
     },
     "severity": "major"
   }
