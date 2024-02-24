@@ -10,7 +10,7 @@ def parse_simple_mode(data: List[str], severity: str) -> Sequence[Mapping[str, A
 
     for line in data:
         if line.startswith(magic_word):
-            path = Path(line.strip(magic_word).strip()).relative_to(Path.cwd())
+            path = Path(line.removeprefix(magic_word).strip()).relative_to(Path.cwd())
             errors.append(generate_error(str(path), severity))
 
     return errors
