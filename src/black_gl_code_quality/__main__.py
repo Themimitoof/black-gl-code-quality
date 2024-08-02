@@ -20,6 +20,12 @@ def main():
     if not validate_severity(severity):
         severity = "major"
 
+    verbose = False
+    args = sys.argv[1:]
+    if "-v" in args:
+        verbose = True
+        args.remove("-v")
+
     if not stdin.closed:
         res = subprocess.run(
             ["black", "--check", *sys.argv[1:]],
@@ -29,7 +35,12 @@ def main():
         exit_code = res.returncode
         stdin = StringIO(res.stderr.decode("utf-8"))
 
-    output = parse_simple_mode(stdin.readlines(), severity)
+    lines = stdin.readlines()
+    if verbose:
+        print("".join(lines), file=sys.stderr)
+
+    output = parse_simple_mode(lines, severity)
+
     print(json.dumps(output))
     sys.exit(exit_code)
 
