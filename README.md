@@ -146,6 +146,24 @@ lint:black:
       codequality: black-code-quality-report.json
 ```
 
+### Debugging
+
+It is possible to pass the `-v` argument to `black-gl-cq` to stream Black's output to stderr.
+
+Here's an example:
+
+```
+$ poetry run black-gl-cq -v src > black-code-quality-report.json
+Identified `/home/themimitoof/repos/black-gl-code-quality` as project root containing a .git directory.
+Sources to be formatted: "src"
+/home/themimitoof/repos/black-gl-code-quality/src/black_gl_code_quality/__init__.py wasn't modified on disk since last run.
+/home/themimitoof/repos/black-gl-code-quality/src/black_gl_code_quality/parser.py wasn't modified on disk since last run.
+/home/themimitoof/repos/black-gl-code-quality/src/black_gl_code_quality/error.py already well formatted, good job.
+/home/themimitoof/repos/black-gl-code-quality/src/black_gl_code_quality/__main__.py already well formatted, good job.
+
+All done! ✨ 🍰 ✨
+4 files would be left unchanged.
+```
 
 ## Contributions
 
