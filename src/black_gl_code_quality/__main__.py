@@ -28,7 +28,7 @@ def main():
 
     if sys.stdin.isatty():
         res = subprocess.run(
-            ["black", "--check", *sys.argv[1:]],
+            ["black", "--check", *args],
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
         )
