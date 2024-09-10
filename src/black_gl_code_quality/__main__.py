@@ -26,7 +26,7 @@ def main():
         verbose = True
         args.remove("-v")
 
-    if not stdin.closed:
+    if sys.stdin.isatty():
         res = subprocess.run(
             ["black", "--check", *sys.argv[1:]],
             stdout=subprocess.PIPE,
